@@ -1,0 +1,424 @@
+@keyframes sparkle {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeOut {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+
+
+/*全体各パーツのデザイン*/
+body {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #fdf5e6; /* お手紙風の背景色 */
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+    text-align: center;
+    padding: 50px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Kaisei Decol', serif;
+}
+
+p {
+    font-family: 'Kaisei Decol', serif;
+    margin-bottom: 20px;
+}
+
+a {
+    font-family: 'Kaisei Decol', serif;
+    color: #1e90ff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+/*全体各パーツのデザイン*/
+
+
+
+/*congratulationメッセージ部のデザイン*/
+#congrats-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 2px solid #000;
+    padding: 20px;
+    font-size: 24px;
+    text-align: center;
+    border-radius: 10px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 1s;
+    z-index: 100;
+    animation: fadeIn 2s ease-in-out forwards;
+}
+
+#congrats-message.hidden {
+    animation: fadeOut 1s ease-in-out forwards;
+  }
+
+#congrats-message .sparkle {
+    animation: sparkle 1s infinite;
+}
+
+#congrats-message.hidden {
+    opacity: 0;
+}
+/*congratulationメッセージ部のデザイン*/
+
+
+
+
+/*おめでとう時ぼやけ*/
+#blur-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(5px);
+    z-index: 50;
+    opacity: 0;
+    transition: opacity 1s;
+    pointer-events: none;
+  }
+  
+  #blur-overlay.visible {
+    opacity: 1;
+  }
+  /*おめでとう時ぼやけ*/
+
+
+  /*ヘッダーデザイン*/
+  header {
+    background-color: white;
+    background-image: url('../img/header_ver01.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+  }
+  
+  h4 {
+    font-size: 24px;
+    font-weight: 500;
+    color: #ffffff; /* 文字色を白に変更 */
+    background-color: rgba(255, 179, 128, 0.8); /* 背景色をオレンジのパステルカラーに変更 */
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 8px 0;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3); /* テキストシャドウを白から黒に変更 */
+  }
+/*ヘッダーデザイン*/  
+
+/*ヘッダーもぼかすために追加*/  
+#wrapper {
+    opacity: 0.5;
+    transition: opacity 0.5s;
+  }
+/*ヘッダーもぼかすために追加*/  
+
+
+/*アンケート部分*/
+#survey-form {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    position: center;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  #survey-form label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  #survey-form input {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  #survey-form button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  #survey-form button:hover {
+    background-color: #444;
+  }
+  
+
+input[type="radio"] {
+    display: none;
+  }
+  
+  input[type="radio"] + label {
+    position: relative;
+    padding-left: 35px;
+    margin-right: 20px;
+    cursor: pointer;
+  }
+  
+  input[type="radio"] + label:before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: 0;
+    width: 24px;
+    height: 24px;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+  }
+  
+  input[type="radio"]:checked + label:after {
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: 8px;
+    width: 12px;
+    height: 12px;
+    background-color: #333;
+    border-radius: 50%;
+  }
+  
+  body, input, button {
+    font-family: 'Courier New', Courier, monospace;
+  }
+
+  input[type="radio"] + label {
+    background-color: #f2a07b;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  input[type="radio"]:checked + label {
+    background-color: #f2a07b;
+    color: white;
+  }
+  
+  .option {
+    font-family: 'Kaisei Decol', serif;
+    background-color: #f2a07b;
+    color: white;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    font-size: 14px;
+    cursor: pointer;
+    margin: 5px;
+  }
+  
+  .hidden {
+    font-family: 'Kaisei Decol', serif;
+    display: none;
+    
+  }
+
+  .question-container {
+    position: relative;
+    min-height: 100px;
+  }
+
+  .question-container {
+    position: relative;
+    min-height: 100px;
+  }
+  
+  .message {
+    color: red;
+  }
+
+ /*アンケート部分*/
+
+  
+
+
+
+ /*カルーセル部分*/
+ .carousel-container {
+    position: relative;
+  width: 250px; /* 画像のサイズに合わせて変更してください */
+  height: 250px;
+  overflow: hidden;
+  margin: 0 auto; /* 追加: 左右のマージンを自動設定して中央に寄せる */
+  }
+  
+  .carousel-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  
+  .carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5%; /* 角を丸くする */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); /* 影をつける */
+  }
+  
+  .carousel-item.active {
+    opacity: 1;
+  }
+  
+  .carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5); /* 追加: 背景色を半透明にする */
+    color: white;
+    border: none;
+    border-radius: 50%; /* 丸いボタン */
+    cursor: pointer;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16), 0 2px 4px rgba(0, 0, 0, 0.23); /* 影をつける */
+  }
+  
+  #prev {
+    left: 10px;
+  }
+  
+  #next {
+    right: 10px;
+  }
+  
+  .carousel-button:hover {
+    background-color: rgba(0, 0, 0, 0.7); /* 追加: ホバー時の背景色を半透明にする */
+  }
+ 
+ /*カルーセル部分*/
+
+
+/*パスワード*/
+ .password-message {
+    font-family: 'Kaisei Decol', serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    z-index: 1000;
+  }
+
+  #submit-password {
+    font-family: 'Kaisei Decol', serif;
+    font-size: 20px;
+    border-radius: 40px;
+    margin: 20px;
+    height: 65px;
+    width: 65px;
+    padding: 0;
+    border: none;
+  }
+
+  #password-input {
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    padding: 8px;
+    text-align: center;
+  }
+  
+/* Add this CSS code */
+@keyframes fade-out {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  
+  .overlay-fade-out {
+    animation: fade-out 1s ease-out forwards;
+  }
+
+  @keyframes fade-out-blur {
+    0% {
+      opacity: 1;
+      filter: blur(5px);
+    }
+    100% {
+      opacity: 0;
+      filter: blur(0);
+    }
+  }
+  
+  .overlay-fade-out-blur {
+    animation: fade-out-blur 1s ease-out forwards;
+  }
+  
+  
+  .blur {
+    filter: blur(5px);
+  }
+/*パスワード*/
+
+  
